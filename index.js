@@ -261,7 +261,7 @@ const TileLayerCustom = L.TileLayer.extend({
     function addPlayer(name) {
         player = L.marker([0, 0], {icon: llama}).addTo(map)
         setInterval(async () => {
-            let x = await fetch("http://larrytllama.cyclic.app/pvc");
+            let x = await fetch("https://larrytllama.cyclic.app/pvc");
             let x2 = await x.json();
             console.log(x2)
             console.log(name)
