@@ -31,8 +31,15 @@ let map = L.map('map', {
 function centre() {
     map.setView([0,0]);
 }
-
-
+function getURLQueryParts(url) {
+    let overallJSON = `{`
+    let each = url.replace("?", "").split("&")
+    each.forEach((item) => overallJSON += `"${item.split("=")[0]}": "${item.split("=")[1]}",`)
+    overallJSON = overallJSON.slice(0, -1); 
+    overallJSON += "}"
+    return JSON.parse(overallJSON);
+}
+let queries = getURLQueryParts(window.location.search)
 const TileLayerCustom = L.TileLayer.extend({
     getTileUrl(coords) {
         //let x = imageToDataUri(`http://localhost:443?url=http://web.peacefulvanilla.club/maps/tiles/World_nether/${coords.z}/${coords.x}_${coords.y}.png`, 512, 512)
@@ -227,12 +234,13 @@ const TileLayerCustom = L.TileLayer.extend({
             [10.976945, 3.5],
             [11.039479, 4.375],
             [16.073472, 4.375],
+            [16.073472, 6.949098],
     ]
     ]
     let colorPicker = document.getElementById("colour")
     var polyline = L.polyline(lines, {color: '#94dee7'}).addTo(map);
     console.log(window.location.search)
-    if(window.location.search.includes("gcu=true")) {
+    if(queries.gcu == "true") {
         let pl = L.polyline(gculines, {color: "#7be765"}).addTo(map);
 
         console.log("Added GCU Lines")
@@ -294,6 +302,7 @@ const TileLayerCustom = L.TileLayer.extend({
             console.log(y)
         }, 2000)
     }
-    addPlayer(window.location.search.split("?player=")[1])
+    if(queries.player)
+    addPlayer(queries.player)
 }
 
