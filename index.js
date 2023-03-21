@@ -242,7 +242,8 @@ const TileLayerCustom = L.TileLayer.extend({
     console.log(window.location.search)
     if(queries.gcu == "true") {
         let pl = L.polyline(gculines, {color: "#7be765"}).addTo(map);
-
+        L.marker([16.129822, 7.09375], {title: "GCU Event location is here!"}).addTo(map).bindPopup("The GCU Event location is here!").openPopup();
+        L.marker([4.439647, 0.09375], {title: "Pink Hub"}).addTo(map).bindPopup("Go from pink hub's LI Tunnel (here!)");
         console.log("Added GCU Lines")
         map.fitBounds(pl.getBounds());
     }
