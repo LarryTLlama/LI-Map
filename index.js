@@ -231,7 +231,11 @@ const TileLayerCustom = L.TileLayer.extend({
     ]
     let colorPicker = document.getElementById("colour")
     var polyline = L.polyline(lines, {color: '#94dee7'}).addTo(map);
-    if(window.location.search.includes("gcu=true")) L.polyline(lines, {color: "f7be765"}).addTo(map);
+    console.log(window.location.search)
+    if(window.location.search.includes("gcu=true")) {
+        L.polyline(lines, {color: "f7be765"}).addTo(map);
+        console.log("Added GCU Lines")
+    }
     colorPicker.addEventListener("change", watchColorPicker, false);
     let player = null;
     let llamabut = document.querySelector(".button1")
