@@ -230,7 +230,7 @@ const TileLayerCustom = L.TileLayer.extend({
     ]
     ]
     let colorPicker = document.getElementById("colour")
-    //var polyline = L.polyline(lines, {color: '#94dee7'}).addTo(map);
+    var polyline = L.polyline(gculines, {color: '#94dee7'}).addTo(map);
     console.log(window.location.search)
     if(window.location.search.includes("gcu=true")) {
         L.polyline(gculines, {color: "#f7be765"}).addTo(map);
