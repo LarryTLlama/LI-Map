@@ -44,9 +44,10 @@ const TileLayerCustom = L.TileLayer.extend({
         minZoom: 1,
         maxZoom: 5,
         tileSize: 768
-    }
+    },
   });
   
+  console.log("Get Coordinates ON")
   function onMapClick(e) {
     navigator.clipboard.writeText("[" + e.latlng.toString().split("LatLng(")[1].split(")")[0] + "],");
   }
@@ -217,8 +218,20 @@ const TileLayerCustom = L.TileLayer.extend({
         [-34.952906, -37.837269],
     ]
     ]
+
+    let gculines = [
+        [
+            [4.473401, 0.15625],
+            [5.536481, 0.125],
+            [5.567748, 3.4375],
+            [10.976945, 3.5],
+            [11.039479, 4.375],
+            [16.073472, 4.375],
+    ]
+    ]
     let colorPicker = document.getElementById("colour")
     var polyline = L.polyline(lines, {color: '#94dee7'}).addTo(map);
+    if(window.location.search.includes("gcu=true")) L.polyline(lines, {color: "f7be765"}).addTo(map);
     colorPicker.addEventListener("change", watchColorPicker, false);
     let player = null;
     let llamabut = document.querySelector(".button1")
@@ -273,7 +286,7 @@ const TileLayerCustom = L.TileLayer.extend({
                 }
             })
             console.log(y)
-        }, 1000)
+        }, 2000)
     }
     addPlayer(window.location.search.split("?player=")[1])
 }
