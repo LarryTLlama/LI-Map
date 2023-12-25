@@ -1,72 +1,181 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
 <head>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
- integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
- crossorigin=""></script>
-    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Llama Iceways Website</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <style>
-        #map { 
-            height: 100%; 
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            overflow: hidden;
+            background-color: darkred;
+        }
+
+        .backgroundimg {
             width: 100%;
         }
-        #coolButtons {
-            right: 5px;
-            bottom: 5px;
+
+        footer {
+            align-items: center;
+            position: absolute;
+            bottom:0;
+            padding-bottom: 5px;
+            width: 100vw;
+            background-color: black;
+        }
+
+        a:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        #mainContent {
+            text-decoration: none;
+            color: white;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+        }
+
+        .cardimg {
+            width: 100%;
+            
+            float: center;
+        }
+
+        .card {
+            width: 260px;
+            height: 175px;
+            align-items: center;
+            position: absolute;
+            display: flexbox;
+            top: 50%;
+            margin-top: -60px;
+            background-color: black;
+            border-radius: 5px;
+        }
+
+        .two {
+            float: left;
+            align-items: center;
+            left: 10%;
+        }
+
+        .one {
+            right: 10%;
+            align-self: right;
+            align-items: center;
+        }
+
+        .cardWrap {
             position: absolute;
         }
 
-        .button1 {
-            padding: 16px;
-            border: 5px black;
-            color: white;
-            background-color: green;
-            position: absolute;
-            z-index: 5000000000000;
-            right: 5px;
-            bottom: 5px;
-            width: 70px;
-        }
-        .button2 {
-            padding: 16px;
-            border: 5px black;
-            color: white;
-            background-color: green;
-            position: absolute;
-            z-index: 5000000000000;
-            right: 5px;
-            bottom: 55px;
-            width: 70px;
-        }
-        .button3 {
-            padding: 16px;
-            border: 5px black;
-            color: white;
-            background-color: green;
-            position: absolute;
-            z-index: 5000000000000;
-            right: 5px;
-            bottom: 105px;
-            width: 70px;
-        }
-        input {
-            position: absolute;
-            z-index: 3000;
-            right: 90px;
-            bottom: 5px;
+        p {
+            float: center;
+            text-align: center;
         }
 
+        .hidden {
+            display: none;
+        }
+
+        .orientation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            align-items: center;
+            z-index: 99999999999999999999999999999999999;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: black;
+        }
+
+        .navtop {
+            border-bottom-right-radius: 5px;
+        }
 
     </style>
 </head>
+
 <body>
-    <script src="./index.js"></script>
-        <input id="colour" type="color"/>
-        <a><button class="button1">Llama</button></a>
-        <a><button class="button2">Boat</button></a>
-        <a><button class="button3">Steve</button></a>
-    <div id="map"></div>
-    <div id="coolButtons"></div>
+    <img class="backgroundimg" id="img1" src="/images/LlamaIceways.png">
+    <img class="backgroundimg hidden" id="img2">
+    <div id="mainContent">
+        <img class="navtop" height="15%" src="/images/logo.png">
+        <a class="two" href="/interactive/start">
+            <div class="two card">
+                <img class="cardimg" src="/images/interactive.png"><br>
+                <h3 style="text-align: center;"><strong>New!</strong> Interactive Map</h3>
+            </div>
+        </a>
+        <a class="one" href="/llama-iceways/">
+            <div class="one card">
+                <img class="cardimg" src="/images/legacy.png"><br>
+                <h3 style="text-align: center;">Legacy Map</h3>
+            </div>
+        </a>
+        <footer>
+            <p>Or check out the <a href="https://peaceful-vanilla-club.fandom.com/wiki/Llama_Iceways">Wiki Page</a></p>
+        </footer>
+    </div>
+    <div class="orientation hidden">
+        <img width="80vw" src="/interactive/rotate.png">
+        <h1 style="float: center;">Hey! Please rotate your device to landscape.<br>Unfortunately the map doesn't support
+            portrait... Yet! 😊</h1>
+    </div>
+    <script>
+        let on1 = true;
+        let one = document.getElementById("img1");
+        let paths = [
+            "/images/LlamaIceways.png",
+            "/images/bruh.png",
+            "/images/express.jpeg",
+            "/images/freedom.png",
+            "/images/up.jpeg"
+        ]
+        setInterval(() => {
+            let random = paths[Math.floor(Math.random() * paths.length)];
+            one.src = random;
+        }, 5000)
+
+        $(window).on('resize', function () {
+            var win = $(this); //this = window
+            if (win.height() > win.width()) {
+                // Remove the "hidden" class from the popup thingy
+                document.querySelector(".orientation").classList.remove("hidden")
+            } else {
+                // Add the hidden class from the popup thingy
+                document.querySelector(".orientation").classList.add("hidden")
+            }
+        })
+
+        if ($(window).height() > $(window).width()) {
+            // Remove the "hidden" class from the popup thingy
+            document.querySelector(".orientation").classList.remove("hidden")
+        } else {
+            // Add the hidden class from the popup thingy
+            document.querySelector(".orientation").classList.add("hidden")
+        }
+    </script>
 </body>
+
+</html>

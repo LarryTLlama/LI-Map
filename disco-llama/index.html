@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="Disco Llama" property="og:title" />
+    <meta content="Disco Llama from LarryTLlama! With new GIFs and epik disco music!" property="og:description" />
+    <meta content="https://li-map.vercel.app/disco-llama" property="og:url" />
+    <meta content="https://li-map.vercel.app/disco-llama/discollama.gif" property="og:image" />
+    <meta content="ff8040" data-react-helmet="true" name="theme-color" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larry got bored again</title>
+    <style>
+
+        body {
+            margin: 0;
+        }
+        .overlay {
+            background-color: black;
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.7;
+            width: 100%;
+            height: 100%;
+        }
+        audio {
+            display: none;
+        }
+
+        @keyframes spinleft {
+            from { transform: rotate(360deg);}
+            to {transform: rotate(0deg);}
+        }
+        @keyframes spinright {
+            from {transform: rotate(0deg);}
+            to {transform: rotate(360deg);}
+        }
+
+        #centreimg {
+            margin-left: calc(50% - 125px);
+        }
+
+        .spinrightslow {
+            animation-name: spinleft;
+            animation-duration: 31200ms;
+            animation-timing-function:linear;
+            animation-iteration-count: infinite;
+        }
+        
+        .background {
+            width:100%;
+            height:100%;
+            position:absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            z-index: 99;
+        }
+
+        p {
+            position:absolute;
+            text-align: center;
+            width: 100%;
+            bottom: 15px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #speed {
+            width: 100px;
+            transform: rotate(180deg);
+        }
+
+        #slider {
+            left: calc(50% - 100px);
+            width: 200px;
+            display: flex;
+            position: absolute;
+            bottom: 2px;
+            height: 10px;
+        }
+
+        #blimg {
+            width: 250px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        #tlimg {
+            width: 250px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #trimg {
+            width: 250px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        #brimg {
+            width: 250px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<audio id="music" src="/disco-llama/disco.mp3"></audio>
+<div class="background">
+<img id="centreimg" width="250px" src="/disco-llama/llama.png">
+<img class="hidden" id="tlimg" src="/disco-llama/llama.gif">
+<img class="hidden" id="trimg" src="/disco-llama/parrot.gif">
+<img class="hidden" id="blimg" src="/disco-llama/dolphin.gif">
+<img class="hidden" id="brimg" src="/disco-llama/seal-spin.gif">
+<p id="id">
+    Click the llama to start!<br>
+    Speed: <span id="valeu">3</span> <input type="range" max="4" min="1" step="1" id="speed" value="2"/><br>
+    Volume control is below :D<br>
+    (The music can sometimes be loud)</p>
+<input type="range" max="1" min="0" step="0.1" id="slider" value="0.5"/>
+</div>
+<div class="overlay">
+
+</div>
+<script>
+    let sped = 2;
+    function handleClicky(ev) {
+        Array.from(document.getElementsByClassName("hidden"))
+        .forEach((el) => el.classList.remove("hidden"));
+        console.log(ev)
+        document.getElementById("music").play();
+        document.getElementById("music").addEventListener("ended", () => { window.location.reload()}, false);
+        document.getElementById("id").innerHTML = "";
+        document.getElementById("centreimg").classList.add("spinrightslow")
+        let e = document.querySelector(".overlay");
+        e.style.display = "block";
+    const colours = ["red", "blue", "green", "yellow", "orange", "blueviolet"];
+    let lastc;
+    function colour() {
+        let randomColour = colours[Math.floor(Math.random() * colours.length)];
+        if(lastc == randomColour) randomColour = colours[Math.floor(Math.random() * colours.length)];
+        if(lastc == randomColour) randomColour = colours[Math.floor(Math.random() * colours.length)];
+        if(lastc == randomColour) randomColour = colours[Math.floor(Math.random() * colours.length)];
+        if(lastc == randomColour) randomColour = colours[Math.floor(Math.random() * colours.length)];
+        if(lastc == randomColour) randomColour = colours[Math.floor(Math.random() * colours.length)];
+        lastc = randomColour;
+        e.style.backgroundColor = randomColour;
+    }
+    colour()
+    setInterval(() => colour(), sped * 487.5)
+    document.getElementById("centreimg").removeEventListener("click", handleClicky, false);
+    }
+
+    document.querySelector("#speed").onchange = () => {
+        sped = document.querySelector("#speed").value;
+        console.log(sped);
+        let reverseval = [4, 3, 2, 1]
+        document.getElementById("valeu").innerText = reverseval[sped - 1];
+    }
+
+    document.getElementById("centreimg").addEventListener("click", handleClicky, false);
+    document.querySelector("audio").volume = 0.5;
+    document.querySelector("#slider").onchange = () => {
+        document.querySelector("audio").volume = document.querySelector("#slider").value;
+    };
+
+</script>
+</body>
+</html>

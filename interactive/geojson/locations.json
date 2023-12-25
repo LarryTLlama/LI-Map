@@ -1,0 +1,537 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "The Emlands Atlantic",
+                "description": "Large shopping area in a big dome offering free plots!",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/The_Emlands_Atlantic",
+                "coordinates": [
+                    -16.439808,
+                    -24.435132
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Bastiontown",
+                "description": "Nether town hosted in a reconverted Bastion",
+                "wiki": null,
+                "coordinates": [
+                    -45.339678,
+                    -65.75
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Moonland (East Entry)",
+                "description": "Abandoned shopping area with public farms and trading hall.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Moonland_Mall",
+                "coordinates": [
+                    -15.617759,
+                    -21.78125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Moonland (West Entry)",
+                "description": "Abandoned shopping area with public farms and trading hall.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Moonland_Mall",
+                "coordinates": [
+                    -15.18002,
+                    -22.1875
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "DM (The Dark Market)",
+                "description": "Collection of public farms and shops, now mostly abandoned.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Dark_Market",
+                "coordinates": [
+                    -5.394562,
+                    -22.28125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Kings' Hub",
+                "description": "Nether hub with bases of a few players",
+                "wiki": null,
+                "coordinates": [
+                    11.944468,
+                    -22.21875
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Bottlenose Cove",
+                "description": "Seaside hamlet with bases and attractions.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Bottlenose_Cove",
+                "coordinates": [
+                    13.632888,
+                    -22.21875
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Ottoman Hub",
+                "description": "Player made area with scenic buildings",
+                "wiki": null,
+                "coordinates": [
+                    12.66361,
+                    -22.21875
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Quartz Hub",
+                "description": "Nether area with farms, shops and PVP arena",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Quartz_Hub",
+                "coordinates": [
+                    13.630946,
+                    -19.0625
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Betaways (West)",
+                "description": "Access to the West 1.18 lands and WORI through the Betalands.",
+                "wiki": null,
+                "coordinates": [
+                    -0.595556,
+                    -27.84375
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Blue Nether Hub",
+                "description": "Nether hub serving the West of the nether.",
+                "wiki": null,
+                "coordinates": [
+                    -0.001482,
+                    -2.03125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Green Nether Hub",
+                "description": "Nether hub serving the North of the nether.",
+                "wiki": null,
+                "coordinates": [
+                    -2.127641,
+                    0.03125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Yellow Nether Hub",
+                "description": "Nether hub serving the East of the nether.",
+                "wiki": null,
+                "coordinates": [
+                    0.061052,
+                    2.9375
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Pink Nether Hub",
+                "description": "Nether hub serving the South of the nether.",
+                "wiki": null,
+                "coordinates": [
+                    2.312279,
+                    0.3125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Snowdin",
+                "description": "Area containing bases for players in a snow biome.",
+                "wiki": null,
+                "coordinates": [
+                    -3.184263,
+                    8.15625
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "BIF (British Imperial Federation) HQ and EE Shops",
+                "description": "HQ for BIF Union, and its trading hall, EE.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/British_Imperial_Federation",
+                "coordinates": [
+                    -2.459754,
+                    1.71875
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Red Nether Hub",
+                "description": "Unofficial player-made nether hub.",
+                "wiki": null,
+                "coordinates": [
+                    -2.678623,
+                    4.4375
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Betaways (South)",
+                "description": "Access to the South 1.18 lands and SORI through the Betalands.",
+                "wiki": null,
+                "coordinates": [
+                    27.827885,
+                    0.3125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Redstopia",
+                "description": "Headquarters of the former ARC union.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Advanced_Redstone_Computing_Union",
+                "coordinates": [
+                    17.663031,
+                    12.09375
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Crimson Creek Nether Hub",
+                "description": "Nether hub with portal access to player bases.",
+                "wiki": null,
+                "coordinates": [
+                    1.137863,
+                    17.53125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Sunset Bay",
+                "description": "Seaside players' town featuring GCU Union HQ",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Sunset_Bay",
+                "coordinates": [
+                    -9.02544,
+                    13.34375
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Sunset Bay Mall",
+                "description": "Indoor shopping area featuring casino.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Sunset_Bay_Mall",
+                "coordinates": [
+                    -10.369923,
+                    13.28125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Flynn's Oceanside Monument",
+                "description": "Player area and monument with farms.",
+                "wiki": null,
+                "coordinates": [
+                    20.236674,
+                    19.5625
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Ends Meet",
+                "description": "Player-made area at corner of iceways.",
+                "wiki": null,
+                "coordinates": [
+                    27.834564,
+                    26.625
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Betaways (East)",
+                "description": "Access to the East 1.18 lands and EORI through the Betalands.",
+                "wiki": null,
+                "coordinates": [
+                    0.038167,
+                    27.15625
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Historians Of PVC (HOP) HQ",
+                "description": "Former Union HQ with museum and library.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Historians_of_PVC",
+                "coordinates": [
+                    -6.277774,
+                    26
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Llama Sanctuary",
+                "description": "Llama-Commercial Union HQ, plus zoo with attractions.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/LarryTLlama%27s_Llama_Sanctuary",
+                "coordinates": [
+                    -7.309587,
+                    21.5625
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "HOP Monument",
+                "description": "Drained ocean monument from the HOP union, still unfinished 👀",
+                "wiki": null,
+                "coordinates": [
+                    -21.723691,
+                    25.625
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Sprucetown",
+                "description": "Player town with bases and shops",
+                "wiki": null,
+                "coordinates": [
+                    -19.717523,
+                    12.78125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Helping Hand Union (HHU) HQ",
+                "description": "Headquarters of the HHU Union.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Helping_Hand_Union",
+                "coordinates": [
+                    7.170323,
+                    22.90625
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Emlands Plaza",
+                "description": "Large shopping area with many shops.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Emlands_Plaza",
+                "coordinates": [
+                    -12.965649,
+                    0.0625
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Potato Town",
+                "description": "Abandoned players' town located in swamp biome.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Potato_Town",
+                "coordinates": [
+                    -17.433854,
+                    -0.875
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Creeper Valley",
+                "description": "Player town with multiple bases",
+                "wiki": null,
+                "coordinates": [
+                    -15.680549,
+                    -17.53125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Universal Welfare Union HQ",
+                "description": "Union HQ, with access to the large Saenctuary",
+                "wiki": null,
+                "coordinates": [
+                    -23.345096,
+                    -11.53125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "The Building Society (TBS)",
+                "description": "Large city and former union HQ for TBS, now owned by the LCU union.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/The_Buildings_of_Society",
+                "coordinates": [
+                    -23.40763,
+                    -26.71875
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Betaways (North)",
+                "description": "Access to the North 1.18 lands and NORI through the Betalands.",
+                "wiki": null,
+                "coordinates": [
+                    -28.333408,
+                    -0.03125
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Barebones",
+                "description": "Area with various farms and other attractions",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Barebones_Public_Farms",
+                "coordinates": [
+                    -29.208885,
+                    -4.6875
+                ]
+            },
+            "properties": {}
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "name": "Certune",
+                "description": "Gold and Blaze farm with smaller shops.",
+                "wiki": "https://peaceful-vanilla-club.fandom.com/wiki/Certune",
+                "coordinates": [
+                    0.099645,
+                    26.6875
+                ]
+            },
+            "properties": {}
+        }
+    ]
+}

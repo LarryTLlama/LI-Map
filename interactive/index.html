@@ -1,0 +1,250 @@
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <link rel="stylesheet" href="/interactive/routing/leaflet-routing-machine.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>Interactive Map - Llama Iceways</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow:hidden;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        #coolButtons {
+            right: 5px;
+            bottom: 5px;
+            position: absolute;
+        }
+
+        .button1 {
+            padding: 16px;
+            border: 5px black;
+            color: white;
+            background-color: green;
+            position: absolute;
+            z-index: 5000000000000;
+            right: 5px;
+            bottom: 5px;
+            width: 70px;
+        }
+
+        .button2 {
+            padding: 16px;
+            border: 5px black;
+            color: white;
+            background-color: green;
+            position: absolute;
+            z-index: 5000000000000;
+            right: 5px;
+            bottom: 55px;
+            width: 70px;
+        }
+
+        .button3 {
+            padding: 16px;
+            border: 5px black;
+            color: white;
+            background-color: green;
+            position: absolute;
+            z-index: 5000000000000;
+            right: 5px;
+            bottom: 105px;
+            width: 70px;
+        }
+
+        .button4 {
+            padding: 16px;
+            border: 5px black;
+            color: white;
+            background-color: orange;
+            position: absolute;
+            z-index: 5000000000000;
+            right: 5px;
+            bottom: 155px;
+            width: 70px;
+        }
+
+        input {
+            position: absolute;
+            z-index: 3000;
+            right: 90px;
+            bottom: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .orientation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            align-items: center;
+            z-index: 99999999999999999999999999999999999;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: black;
+        }
+
+        .selectors {
+            position: absolute;
+            right: 0;
+            z-index: 5000000000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="orientation">
+        <img src="/interactive/rotate.png">
+        <h1 style="float: center;">Hey! Please rotate your device to landscape.<br>Unfortunately the map doesn't support
+            portrait... Yet! 😊</h1>
+    </div>
+    <div style="background-color: white; padding: 16px; border-radius: 5px;" class="selectors">
+        <div id="selectors">
+            Get Directions:<br>
+            <select id="start">
+                <option value="nowhere" disabled selected>Start Location</option>
+                <option value="here" id="yourLoc" disabled>Your Location</option>
+                <optgroup label="Spawn">
+                    <option value="acy">Blue Nether Hub</option>
+                    <option value="acq">Green Nether Hub</option>
+                    <option value="acz">Yellow Nether Hub</option>
+                    <option value="adw">Pink Nether Hub</option>
+                    <option value="aci">BIF (British Imperial
+                        Federation) HQ</option>
+                    <option value="afg">Red Nether Hub</option>
+                </optgroup>
+                <optgroup label="North-West Core">
+                    <option value="afc">The Emlands Atlantic</option>
+                    <option value="aau">Moonland (East Entry)</option>
+                    <option value="afd">DM (The Dark Market)</option>
+                    <option value="abl">Emlands Plaza</option>
+                    <option value="aaz">Potato Town</option>
+                    <option value="aaw">CVU Hub</option>
+                    <option value="afl">Universal Welfare Union HQ</option>
+                    <option value="afb">The Building Society (TBS)</option>
+                    <option value="afn">Barebones</option>
+                </optgroup>
+                <optgroup label="North-East Core">
+                    <option value="acd">Snowdin</option>
+                    <option value="afi">Sunset Bay</option>
+                    <option value="abn">Sunset Bay Mall</option>
+                    <option value="aby">Historians Of PVC (HOP) HQ</option>
+                    <option value="abv">Llama Sanctuary/LCU HQ</option>
+                    <option value="afk">Sprucetown</option>
+                </optgroup>
+                <optgroup label="South-East Core">
+                    <option value="adg">Certune</option>
+                    <option value="aem">Redstopia</option>
+                    <option value="afh">Crimson Creek Nether Hub</option>
+                    <option value="afj">Flynn's Oceanside Monument</option>
+                    <option value="afa">Ends Meet</option>
+                    <option value="ade">Helping Hand Union (HHU) HQ</option>
+                </optgroup>
+                <optgroup label="South-West Core">
+                    <option value="afe">Kings' Hub</option>
+                    <option value="aej">Bottlenose Cove</option>
+                    <option value="afe">Ottoman Hub</option>
+                    <option value="aff">Quartz Hub</option>
+                </optgroup>
+                <optgroup label="2K Loop and Beyond">
+                    <option value="aew">Betaways (South)</option>
+                    <option value="acl">Betaways (West)</option>
+                    <option value="adh">Betaways (East)</option>
+                    <option value="afm">Betaways (North)</option>
+                    <option value="afp">WORI/NORI Junction</option>
+                    <option value="afr">EORI/NORI Junction</option>
+                    <option value="afw">WORI/SORI Junction</option>
+                    <option value="aft">EORI/SORI Junction</option>
+                    <option value="afs">EORI/E Betaways Junction</option>
+                    <option value="afv">SORI/S Betaways Junction</option>
+                    <option value="afx">WORI/W Betaways Junction</option>
+                    <option value="afq">NORI/N Betaways Junction</option>
+                    <option value="aaa">Bastiontown</option>
+                </optgroup>
+            </select><br>
+            <select id="end">
+                <option value="nowhere" disabled selected>End Location</option>
+                <optgroup label="Spawn">
+                    <option value="acy">Blue Nether Hub</option>
+                    <option value="acq">Green Nether Hub</option>
+                    <option value="acz">Yellow Nether Hub</option>
+                    <option value="adw">Pink Nether Hub</option>
+                    <option value="aci">BIF (British Imperial
+                        Federation) HQ</option>
+                    <option value="afg">Red Nether Hub</option>
+                </optgroup>
+                <optgroup label="North-West Core">
+                    <option value="afc">The Emlands Atlantic</option>
+                    <option value="aau">Moonland (East Entry)</option>
+                    <option value="afd">DM (The Dark Market)</option>
+                    <option value="abl">Emlands Plaza</option>
+                    <option value="aaz">Potato Town</option>
+                    <option value="aaw">CVU Hub</option>
+                    <option value="afl">Universal Welfare Union HQ</option>
+                    <option value="afb">The Building Society (TBS)</option>
+                    <option value="afn">Barebones</option>
+                </optgroup>
+                <optgroup label="North-East Core">
+                    <option value="acd">Snowdin</option>
+                    <option value="afi">Sunset Bay</option>
+                    <option value="abn">Sunset Bay Mall</option>
+                    <option value="aby">Historians Of PVC (HOP) HQ</option>
+                    <option value="abv">Llama Sanctuary/LCU HQ</option>
+                    <option value="afk">Sprucetown</option>
+                </optgroup>
+                <optgroup label="South-East Core">
+                    <option value="adg">Certune</option>
+                    <option value="aem">Redstopia</option>
+                    <option value="afh">Crimson Creek Nether Hub</option>
+                    <option value="afj">Flynn's Oceanside Monument</option>
+                    <option value="afa">Ends Meet</option>
+                    <option value="ade">Helping Hand Union (HHU) HQ</option>
+                </optgroup>
+                <optgroup label="South-West Core">
+                    <option value="afe">Kings' Hub</option>
+                    <option value="aej">Bottlenose Cove</option>
+                    <option value="afe">Ottoman Hub</option>
+                    <option value="aff">Quartz Hub</option>
+                </optgroup>
+                <optgroup label="2K Loop and Beyond">
+                    <option value="aew">Betaways (South)</option>
+                    <option value="acl">Betaways (West)</option>
+                    <option value="adh">Betaways (East)</option>
+                    <option value="aaa">Bastiontown</option>
+                    <option value="afm">Betaways (North)</option>
+                </optgroup>
+            </select><br>
+            <button id="go">Navigate!</button>
+            <button id="cls">Clear</button>
+        </div>
+        <!-- Max height 89vh when beta message isn't there.-->
+        <div id="steps" style="max-height: calc(75vh - 32px); overflow-y:scroll;">
+
+        </div>
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+        <script src="./leafletrotatemarker.js"></script>
+        <script src="/interactive/queue.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+        <script src="/interactive/index.js"></script>
+    </div>
+    <div id="hiddenCanvas"></div>
+    <input id="colour" type="color" />
+    <a><button class="button4">Follow</button></a>
+    <a><button class="button1">Llama</button></a>
+    <a><button class="button2">Boat</button></a>
+    <a><button class="button3">Steve</button></a>
+    <div id="map"></div>
+    <div id="coolButtons"></div>
+</body>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larry's Epic Treasure Hunt - Start</title>
+</head>
+
+<body>
+    <h1>Welcome to Larry's Epic Treasure Hunt!</h1>
+    <p>There are 15 parts to this event. It begins as soon as you press the button below!<br>We'll set a timer that
+        follows you through the event. It doesn't count for anything, but a fun thing to know at the end!<br>The timer
+        (and the challenges) begin when you press the button below.<br><br>Good luck!</p>
+    <a href="javascript:BeginTheEvent()"><button>The button</button></a>
+    <script>
+        async function BeginTheEvent() {
+            let f = await fetch("../api/uuid");
+            let t = await f.text();
+            window.location = "./quiz.html?uuid="+t;
+        }
+    </script>
+</body>
+
+</html>
