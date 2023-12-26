@@ -91,7 +91,7 @@ window.onload = async function () {
             transformation: new L.Transformation(1, 0, 1, 0)
         }),
         zoom: 5
-    }).setView([0, 0], 0);
+    }).setView([0, 0], 2);
 
     function centre() {
         map.setView([0, 0]);
@@ -114,7 +114,7 @@ window.onload = async function () {
         options: {
             noWrap: true,
             bounds: [[-1000, -1000], [1000, 1000]],
-            minZoom: 1,
+            minZoom: 0,
             maxZoom: 5,
             tileSize: 512
         },
