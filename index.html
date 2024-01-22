@@ -11,6 +11,9 @@
     <title>Llama Iceways Website</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    </link>
+    <script src="/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
@@ -23,27 +26,14 @@
         }
 
         .backgroundimg {
-            width: 100%;
-        }
-
-        footer {
-            align-items: center;
-            position: absolute;
-            bottom:0;
-            padding-bottom: 5px;
             width: 100vw;
-            background-color: black;
+            height: 100vh;
+            object-fit: cover;
         }
 
-        a:visited {
-            color: white;
-            text-decoration: none;
-        }
-
-        #mainContent {
+        /*#mainContent {
             text-decoration: none;
             color: white;
-            z-index: 999;
             top: 0;
             left: 0;
             width: 100vw;
@@ -51,100 +41,141 @@
             position: absolute;
             background-color: rgba(0, 0, 0, 0.5);
             align-items: center;
-        }
-
-        .cardimg {
-            width: 100%;
-            
-            float: center;
-        }
-
-        .card {
-            width: 260px;
-            height: 175px;
-            align-items: center;
-            position: absolute;
-            display: flexbox;
-            top: 50%;
-            margin-top: -60px;
-            background-color: black;
-            border-radius: 5px;
-        }
-
-        .two {
-            float: left;
-            align-items: center;
-            left: 10%;
-        }
-
-        .one {
-            right: 10%;
-            align-self: right;
-            align-items: center;
-        }
-
-        .cardWrap {
-            position: absolute;
-        }
-
-        p {
-            float: center;
-            text-align: center;
-        }
+        }*/
 
         .hidden {
             display: none;
-        }
-
-        .orientation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            align-items: center;
-            z-index: 99999999999999999999999999999999999;
-            background-color: rgba(255, 255, 255, 0.7);
-            color: black;
         }
 
         .navtop {
             border-bottom-right-radius: 5px;
         }
 
+        .morestuff {
+            margin-top: -30px;
+            
+            z-index: 99999;
+        }
+
+        .boujee-text {
+            --bg-size: 400%;
+            --color-one: hsl(306, 90%, 53%);
+            --color-two: hsl(24, 100%, 50%);
+            font-weight: bolder;
+            font-size: clamp(1rem, 8.3vmin, 2.6rem);
+            background: linear-gradient(90deg,
+                    var(--color-one),
+                    var(--color-two),
+                    var(--color-one)) 0 0 / var(--bg-size) 100%;
+            color: transparent;
+            background-clip: text;
+            font-family:Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 60px;
+        }
+
+        h1 {
+            font-family:Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 60px;
+            color: white;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .boujee-text {
+                animation: move-bg 8s linear infinite;
+            }
+
+            @keyframes move-bg {
+                to {
+                    background-position: var(--bg-size) 0;
+                }
+            }
+        }
+
+        #mainContent {
+            height: 100vh;
+            width: 100vw;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("images/freedom.png");
+            background-position: center;
+            transition: background-image 2s ease-in-out;
+            -webkit-transition: background-image 2s ease-in-out;
+        }
+
+        .bigtextdiv {
+            margin-top: 30vh;
+            margin-bottom: 50vh;
+            margin-left: 5%;
+            margin-right: 10%;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+
+        .subbigtext {
+            font-weight:normal;
+            font-size:initial;
+            color: rgb(173, 173, 173);
+        }
     </style>
 </head>
 
 <body>
-    <img class="backgroundimg" id="img1" src="/images/LlamaIceways.png">
-    <img class="backgroundimg hidden" id="img2">
-    <div id="mainContent">
-        <img class="navtop" height="15%" src="/images/logo.png">
-        <a class="two" href="/interactive/start">
-            <div class="two card">
-                <img class="cardimg" src="/images/interactive.png"><br>
-                <h3 style="text-align: center;"><strong>New!</strong> Interactive Map</h3>
+    <nav class="navbar navbar-light navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">🦙 Llama Iceways</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/interactive">Interactive Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/llama-iceways">Old Website</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Wiki Pages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Llama Iceways</a></li>
+                            <li><a class="dropdown-item" href="#">LI Map (Wiki)</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Llama Commercial Union</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search For Destinations..."
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
-        </a>
-        <a class="one" href="/llama-iceways/">
-            <div class="one card">
-                <img class="cardimg" src="/images/legacy.png"><br>
-                <h3 style="text-align: center;">Legacy Map</h3>
-            </div>
-        </a>
-        <footer>
-            <p>Or check out the <a href="https://peaceful-vanilla-club.fandom.com/wiki/Llama_Iceways">Wiki Page</a></p>
-        </footer>
-    </div>
-    <div class="orientation hidden">
-        <img width="80vw" src="/interactive/rotate.png">
-        <h1 style="float: center;">Hey! Please rotate your device to landscape.<br>Unfortunately the map doesn't support
-            portrait... Yet! 😊</h1>
+        </div>
+    </nav>
+    <div id="mainContent" class="d-flex justify-content-center">
+        <div class="bigtextdiv">
+            <h1 class="bigtext">Travel the <span class="boujee-text">Largest Iceway Network</span></h1>
+            <p class="subbigtext">With over 50 Destinations across the nether, and more than 100,000 blocks of ice placed.</p>
+            <a href="/interactive"><button class="btn btn-success">View Interactive Map</button></a>
+            <a href="/destinations"><button class="btn btn-outline-primary">Find Destinations</button></a>
+        </div>
     </div>
     <script>
         let on1 = true;
-        let one = document.getElementById("img1");
+        let one = document.getElementById("mainContent");
         let paths = [
             "/images/LlamaIceways.png",
             "/images/bruh.png",
@@ -154,27 +185,8 @@
         ]
         setInterval(() => {
             let random = paths[Math.floor(Math.random() * paths.length)];
-            one.src = random;
+            one.style.backgroundImage = `url(${random})`;
         }, 5000)
-
-        $(window).on('resize', function () {
-            var win = $(this); //this = window
-            if (win.height() > win.width()) {
-                // Remove the "hidden" class from the popup thingy
-                document.querySelector(".orientation").classList.remove("hidden")
-            } else {
-                // Add the hidden class from the popup thingy
-                document.querySelector(".orientation").classList.add("hidden")
-            }
-        })
-
-        if ($(window).height() > $(window).width()) {
-            // Remove the "hidden" class from the popup thingy
-            document.querySelector(".orientation").classList.remove("hidden")
-        } else {
-            // Add the hidden class from the popup thingy
-            document.querySelector(".orientation").classList.add("hidden")
-        }
     </script>
 </body>
 
