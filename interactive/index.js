@@ -1,13 +1,3 @@
-$(window).on('resize', function () {
-    var win = $(this); //this = window
-    if (win.height() > win.width()) {
-        // Remove the "hidden" class from the popup thingy
-        document.querySelector(".orientation").classList.remove("hidden")
-    } else {
-        // Add the hidden class from the popup thingy
-        document.querySelector(".orientation").classList.add("hidden")
-    }
-});
 let currentPlayerCoordinates = [];
 let polyline;
 let router;
@@ -21,7 +11,7 @@ function toRadians(degrees) {
 // Converts from radians to degrees.
 function toDegrees(radians) {
     return radians * 180 / Math.PI;
-    
+
 }
 
 // Thanks Stack Overflow!
@@ -57,13 +47,7 @@ function metersToPixelsLatLng(num) {
 }
 
 window.onload = async function () {
-    if ($(window).height() > $(window).width()) {
-        // Remove the "hidden" class from the popup thingy
-        document.querySelector(".orientation").classList.remove("hidden")
-    } else {
-        // Add the hidden class from the popup thingy
-        document.querySelector(".orientation").classList.add("hidden")
-    }
+
     function imageToDataUri(img, width, height) {
 
         // create an off-screen canvas
@@ -90,8 +74,29 @@ window.onload = async function () {
             // https://stackoverflow.com/a/62320569/3530727
             transformation: new L.Transformation(1, 0, 1, 0)
         }),
-        zoom: 5
-    }).setView([0, 0], 2);
+        zoom: 5,
+        zoomControl: false
+    })
+
+    let playersLayer = L.layerGroup().addTo(map),
+        linesLayer = L.layerGroup().addTo(map),
+        locationsLayer = L.layerGroup().addTo(map),
+        otherStuffLayer = L.layerGroup().addTo(map)
+
+    let thingymabobs = {
+        "Players": playersLayer,
+        "Iceways": linesLayer,
+        "Locations": locationsLayer,
+        "Other Stuff": otherStuffLayer
+    }
+
+    L.control.layers(null,thingymabobs, {position: 'bottomleft'}).addTo(map)
+
+
+
+    L.control.zoom({
+        position: 'bottomleft'
+    }).addTo(map);
 
     function centre() {
         map.setView([0, 0]);
@@ -131,7 +136,7 @@ window.onload = async function () {
     console.log(map)
 
     setInterval(() => {
-        map.invalidateSize()
+        map.validateSize()
     }, 1000)
 
     /*let markers = [
@@ -379,51 +384,23 @@ window.onload = async function () {
 
     ]
 
-    let gculines = [
-        [
-            [4.473401, 0.15625],
-            [5.536481, 0.125],
-            [5.567748, 3.4375],
-            [10.976945, 3.5],
-            [11.039479, 4.375],
-            [16.073472, 4.375],
-            [16.073472, 6.949098],
-        ]
-    ]
 
     //[-5.340598, -0.03125],
     let colorPicker = document.getElementById("colour")
     let r = await fetch("./interactive/geojson/paths.json");
     let r2d2 = await r.json();
-    polyline = L.polyline(lines, { color: '#94dee7' }).addTo(map);
+    polyline = L.polyline(lines, { color: '#94dee7' }).addTo(linesLayer);
     console.log(polyline.toGeoJSON())
     console.log(window.location.search)
-    if (queries.gcu == "true") {
-        let pl = L.polyline(gculines, { color: "#7be765" }).addTo(map);
-        L.marker([16.129822, 7.09375], { title: "GCU Event location is here!" }).addTo(map).bindPopup("The GCU Event location is here!").openPopup();
-        L.marker([4.439647, 0.09375], { title: "Pink Hub" }).addTo(map).bindPopup("Go from pink hub's LI Tunnel (here!)");
-        console.log("Added GCU Lines")
-        map.fitBounds(pl.getBounds());
-    }
-    colorPicker.addEventListener("change", watchColorPicker, false);
     let player = null;
-    let llamabut = document.querySelector(".button1")
-    let boatbut = document.querySelector(".button2")
-    let stevebut = document.querySelector(".button3")
-    let followplayer = document.querySelector(".button4")
-    llamabut.addEventListener("click", changeType, false)
-    boatbut.addEventListener("click", changeType, false)
-    stevebut.addEventListener("click", changeType, false)
     let follow = false;
     function followPlayer() {
         follow == true ? follow = false : follow = true;
     }
-    followplayer.addEventListener("click", followPlayer, false)
     function watchColorPicker(event) {
         console.log(polyline)
         polyline.setStyle({ color: event.target.value });
     }
-    centre()
     //map.fitBounds(polyline.getBounds());
 
 
@@ -443,7 +420,7 @@ window.onload = async function () {
         iconUrl: '/interactive/spawn.png',
         iconSize: [16, 16],
     });
-    var spawnmarker = L.marker([0, 0], { icon: spawn }).bindPopup("Spawn Portal (0, 0)").addTo(map);
+    var spawnmarker = L.marker([0, 0], { icon: spawn }).bindPopup("Spawn Portal (0, 0)").addTo(otherStuffLayer);
     function changeType(type) {
         if (!player) return;
         if (type.target.innerText == "Llama") {
@@ -455,27 +432,48 @@ window.onload = async function () {
         }
     }
 
-    function addPlayer(name) {
-        document.getElementById("yourLoc").removeAttribute("disabled")
-        player = L.marker([0, 0], { icon: llama }).addTo(map)
-        setInterval(async () => {
-            let x = await fetch("../api/index");
-            let x2 = await x.json();
-            console.log(x2)
-            console.log(name)
-            let y = false;
-            x2.players.forEach((x3) => {
-                if (((x3.world == "World_nether") || (x3.world == "minecraft_the_nether")) && x3.name == queries.player) {
-                    player.setLatLng([pixelsToMeters(x3.z), pixelsToMeters(x3.x)]);
-                    y = true
 
-                    currentPlayerCoordinates = [pixelsToMeters(x3.z), pixelsToMeters(x3.x)]
+    var players = {}
+    async function addPlayers() {
+        //document.getElementById("yourLoc").removeAttribute("disabled")
+        let x = await fetch("../api/index");
+        let x2 = await x.json();
+        x2.players.forEach(async (x3) => {
+            if (((x3.world == "World_nether") || (x3.world == "minecraft_the_nether"))) {
+                // Get the player's username.
+                if (!players[x3.uuid]) {
+                    let nom = x3.name;
+                    let skin = `https://api.tydiumcraft.net/v1/players/skin?uuid=${x3.uuid}&type=avatar`
+                    players[x3.uuid] = L.marker([pixelsToMeters(x3.z), pixelsToMeters(x3.x)], {
+                        icon: L.divIcon({
+                            html: `<div class="playerIcon"><img src="${skin}" /> <p>${nom}</p></div>`
+                        })
+                    }).addTo(playersLayer)
+                } else {
+                    players[x3.uuid].setLatLng([pixelsToMeters(x3.z), pixelsToMeters(x3.x)])
                 }
-            })
-            console.log(y)
-        }, 1000)
+            }
+
+        })
+
+        let uuids = []
+
+        for (const i of x2.players) {
+            if (((x3.world == "World_nether") || (x3.world == "minecraft_the_nether"))) uuids.push(i)
+        }
+
+        Object.keys(players).forEach((eeeeeee) => {
+            if (!uuids.has(eeeeeee)) {
+                players[eeeeeee].remove()
+            }
+        })
+        console.log(uuids)
     }
-    if (queries.player) addPlayer(queries.player)
+    addPlayers()
+
+    setInterval(async () => {
+        addPlayers()
+    }, 2000)
 
     // All da locations:
     let locations = [
@@ -755,7 +753,14 @@ window.onload = async function () {
         },
     ]
 
-    var markersLayer = new L.LayerGroup();	//layer contain searched elements
+    if (new URL(window.location).searchParams.has("pos")) {
+        let x = new URL(window.location).searchParams.get("pos").split(",");
+        map.setView([Number(x[0]), Number(x[1])])
+        map.setZoom(5)
+    } else {
+        centre()
+    }
+
 
     // This next block of code allows all the nodes to show up.
     // Append "?showdebugnodes=true" to the request URL to get these to show.
@@ -769,14 +774,14 @@ window.onload = async function () {
                 alphabet.forEach((itemthree) => {
                     let node = itemone + itemtwo + itemthree;
                     if (nodes[node]) {
-                        markersLayer.addLayer(L.marker(nodes[node].coords, { icon: spawn }).bindPopup(`[DEBUG NODE] ${node}`));
+                        locationsLayer.addLayer(L.marker(nodes[node].coords, { icon: spawn }).bindPopup(`[DEBUG NODE] ${node}`));
                     }
                 })
             })
         })
     }
 
-    map.addLayer(markersLayer);
+    map.addLayer(locationsLayer);
 
     /**
      * Equation of a straight line
@@ -797,8 +802,16 @@ window.onload = async function () {
 
     //router.route(waypoints, callback, context, options)
     locations.forEach((i) => {
-        markersLayer.addLayer(L.marker(i.coords, {}).bindPopup(`<strong>${i.name}</strong><br>${i.description ?? "No description provided"}<br>${(i.wiki == "") || (i.wiki == null) ? "" : `<a href="${i.wiki}">Wiki Page</a><br>`}Coordinates: ${metersToPixels(i.coords[1])}, ${metersToPixels(i.coords[0])}`));
+        locationsLayer.addLayer(L.marker(i.coords, {}).bindPopup(`<strong>${i.name}</strong><br>${i.description ?? "No description provided"}<br>${(i.wiki == "") || (i.wiki == null) ? "" : `<a href="${i.wiki}">Wiki Page</a><br>`}Coordinates: ${metersToPixels(i.coords[1])}, ${metersToPixels(i.coords[0])}`));
     })
+
+    
+
+
+    // Occasionally the leaflet thing on touch goes weird.
+    // This should stop that from being like so :p
+    console.log(document.querySelectorAll("#map > .leaflet-pane > .leaflet-overlay-pane > .leaflet-zoom-animated").length)
+    document.querySelector("#map > .leaflet-pane > .leaflet-overlay-pane > .leaflet-zoom-animated").width = window.innerWidth;
 }
 
 function getDistance(x1, y1, x2, y2) {
@@ -806,11 +819,13 @@ function getDistance(x1, y1, x2, y2) {
 }
 let maproutepolyline = null;
 let routerfunc = async () => {
+
     if (maproutepolyline) maproutepolyline.remove();
     let start = document.getElementById("start").value,
         properstart = start,
         end = document.getElementById("end").value;
     if (start == "nowhere" || end == "nowhere") return;
+    document.getElementById("steps").innerHTML = "Loading...";
     let graph = await fetch("/interactive/nodes.json");
     let nodes = await graph.json();
     if (start == "here") {
@@ -927,9 +942,23 @@ let routerfunc = async () => {
 
     })
 
-    maproutepolyline = L.polyline(routepolyline, { color: '#008000' }).addTo(map);
+    maproutepolyline = L.polyline(routepolyline, { color: '#008000' }).addTo(linesLayer);
 }
-
 document.getElementById("go").onclick = routerfunc;
 
+let clss = document.getElementById("cls")
+clss.onclick = () => {
+    document.getElementById("steps").innerHTML = "";
+    maproutepolyline.remove(map)
+}
 
+let directionse = false;
+function gimmeDirections() {
+    if (directionse == true) {
+        document.getElementById("pullup").style.display = "none"
+        directionse = false;
+    } else {
+        document.getElementById("pullup").style.display = "block"
+        directionse = true
+    }
+}

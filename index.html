@@ -53,8 +53,6 @@
 
         .morestuff {
             margin-top: -30px;
-            
-            z-index: 99999;
         }
 
         .boujee-text {
@@ -119,6 +117,10 @@
             font-size:initial;
             color: rgb(173, 173, 173);
         }
+
+        nav {
+            z-index: 999999;
+        }
     </style>
 </head>
 
@@ -140,6 +142,9 @@
                         <a class="nav-link" href="/interactive">Interactive Map</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/destinations">Destinations</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/llama-iceways">Old Website</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -157,10 +162,10 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search For Destinations..."
+                <form class="d-flex" name="search" action="/destinations" method="get" >
+                    <input id="search" class="form-control me-2" name="search" type="text" placeholder="Search For Destinations..."
                         aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success" type="submit" value="submit">Search</button>
                 </form>
             </div>
         </div>
