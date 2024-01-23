@@ -13,6 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     </link>
+    <meta property="og:title" content="Llama Iceways - Home" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://li-map.vercel.app" />
+    <meta property="og:image" content="https://li-map.vercel.app/images/logo.png" />
+    <meta property="og:description" content="Your one-stop shop for all the important Llama Iceways information!" />
+    <meta name="theme-color" content="#73C3F4">
     <script src="/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <style>
@@ -67,13 +73,13 @@
                     var(--color-one)) 0 0 / var(--bg-size) 100%;
             color: transparent;
             background-clip: text;
-            font-family:Arial, Helvetica, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-weight: bolder;
             font-size: 60px;
         }
 
         h1 {
-            font-family:Arial, Helvetica, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-weight: bolder;
             font-size: 60px;
             color: white;
@@ -108,13 +114,13 @@
             margin-left: 5%;
             margin-right: 10%;
             position: absolute;
-            top:0;
-            left:0;
+            top: 0;
+            left: 0;
         }
 
         .subbigtext {
-            font-weight:normal;
-            font-size:initial;
+            font-weight: normal;
+            font-size: initial;
             color: rgb(173, 173, 173);
         }
 
@@ -129,8 +135,8 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">🦙 Llama Iceways</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -162,9 +168,9 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" name="search" action="/destinations" method="get" >
-                    <input id="search" class="form-control me-2" name="search" type="text" placeholder="Search For Destinations..."
-                        aria-label="Search">
+                <form class="d-flex" name="search" action="/destinations" method="get">
+                    <input id="search" class="form-control me-2" name="search" type="text"
+                        placeholder="Search For Destinations..." aria-label="Search">
                     <button class="btn btn-outline-success" type="submit" value="submit">Search</button>
                 </form>
             </div>
@@ -173,7 +179,8 @@
     <div id="mainContent" class="d-flex justify-content-center">
         <div class="bigtextdiv">
             <h1 class="bigtext">Travel the <span class="boujee-text">Largest Iceway Network</span></h1>
-            <p class="subbigtext">With over 50 Destinations across the nether, and more than 100,000 blocks of ice placed.</p>
+            <p class="subbigtext">With over 50 Destinations across the nether, and more than 100,000 blocks of ice
+                placed.</p>
             <a href="/interactive"><button class="btn btn-success">View Interactive Map</button></a>
             <a href="/destinations"><button class="btn btn-outline-primary">Find Destinations</button></a>
         </div>
