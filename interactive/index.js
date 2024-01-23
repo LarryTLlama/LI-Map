@@ -942,7 +942,7 @@ let routerfunc = async () => {
 
     })
 
-    maproutepolyline = L.polyline(routepolyline, { color: '#008000' }).addTo(linesLayer);
+    maproutepolyline = L.polyline(routepolyline, { color: '#008000' }).addTo(map);
 }
 document.getElementById("go").onclick = routerfunc;
 
