@@ -90,7 +90,7 @@ window.onload = async function () {
         "Other Stuff": otherStuffLayer
     }
 
-    L.control.layers(null,thingymabobs, {position: 'bottomleft'}).addTo(map)
+    L.control.layers(null, thingymabobs, { position: 'bottomleft' }).addTo(map)
 
 
 
@@ -136,7 +136,7 @@ window.onload = async function () {
     console.log(map)
 
     setInterval(() => {
-        map.validateSize()
+        map.invalidateSize()
     }, 1000)
 
     /*let markers = [
@@ -433,11 +433,20 @@ window.onload = async function () {
     }
 
 
-    var players = {}
+    let players = {};
+    let uuids = [];
     async function addPlayers() {
         //document.getElementById("yourLoc").removeAttribute("disabled")
         let x = await fetch("../api/index");
         let x2 = await x.json();
+
+        for (const i of x2.players) {
+            if(!((i.world == "World_nether") || (i.world == "minecraft_the_nether")) && (uuids.indexOf(i.uuid) != -1)) {
+                players[i.uuid].remove();
+                uuids.splice(uuids.indexOf(i.uuid), 1);
+            }
+        }
+
         x2.players.forEach(async (x3) => {
             if (((x3.world == "World_nether") || (x3.world == "minecraft_the_nether"))) {
                 // Get the player's username.
@@ -449,25 +458,12 @@ window.onload = async function () {
                             html: `<div class="playerIcon"><img src="${skin}" /> <p>${nom}</p></div>`
                         })
                     }).addTo(playersLayer)
+                    uuids.push(x3.uuid)
                 } else {
                     players[x3.uuid].setLatLng([pixelsToMeters(x3.z), pixelsToMeters(x3.x)])
                 }
             }
-
         })
-
-        let uuids = []
-
-        for (const i of x2.players) {
-            if (((x3.world == "World_nether") || (x3.world == "minecraft_the_nether"))) uuids.push(i)
-        }
-
-        Object.keys(players).forEach((eeeeeee) => {
-            if (!uuids.has(eeeeeee)) {
-                players[eeeeeee].remove()
-            }
-        })
-        console.log(uuids)
     }
     addPlayers()
 
@@ -805,7 +801,7 @@ window.onload = async function () {
         locationsLayer.addLayer(L.marker(i.coords, {}).bindPopup(`<strong>${i.name}</strong><br>${i.description ?? "No description provided"}<br>${(i.wiki == "") || (i.wiki == null) ? "" : `<a href="${i.wiki}">Wiki Page</a><br>`}Coordinates: ${metersToPixels(i.coords[1])}, ${metersToPixels(i.coords[0])}`));
     })
 
-    
+
 
 
     // Occasionally the leaflet thing on touch goes weird.
