@@ -121,7 +121,8 @@ window.onload = async function () {
             bounds: [[-1000, -1000], [1000, 1000]],
             minZoom: 0,
             maxZoom: 5,
-            tileSize: 512
+            tileSize: 512,
+            attribution: `Last map tile update: 26th Jan 2024 - <a href="https://web.peacefulvanilla.club/maps" >PVC Map</a>`
         },
     });
 
@@ -441,7 +442,7 @@ window.onload = async function () {
         let x2 = await x.json();
 
         for (const i of x2.players) {
-            if(!((i.world == "World_nether") || (i.world == "minecraft_the_nether")) && (uuids.indexOf(i.uuid) != -1)) {
+            if (!((i.world == "World_nether") || (i.world == "minecraft_the_nether")) && (uuids.indexOf(i.uuid) != -1)) {
                 players[i.uuid].remove();
                 uuids.splice(uuids.indexOf(i.uuid), 1);
             }
@@ -452,12 +453,12 @@ window.onload = async function () {
                 // Get the player's username.
                 if (!players[x3.uuid]) {
                     let nom = x3.name;
-                    let skin = `https://api.tydiumcraft.net/v1/players/skin?uuid=${x3.uuid}&type=avatar`
+                    let skin = `https://starlightskins.lunareclipse.studio/skin-render/head/${x3.name}/full`//`http://api.tydiumcraft.net/v1/players/skin?uuid=${x3.uuid}&type=avatar`
                     players[x3.uuid] = L.marker([pixelsToMeters(x3.z), pixelsToMeters(x3.x)], {
                         icon: L.divIcon({
                             html: `<div class="playerIcon"><img src="${skin}" /> <p>${nom}</p></div>`
                         })
-                    }).addTo(playersLayer)
+                    }).bindPopup(`<strong>${x3.name}</strong><br>Is at: ${x3.x} ${x3.z}`).addTo(playersLayer)
                     uuids.push(x3.uuid)
                 } else {
                     players[x3.uuid].setLatLng([pixelsToMeters(x3.z), pixelsToMeters(x3.x)])
@@ -958,3 +959,12 @@ function gimmeDirections() {
         directionse = true
     }
 }
+
+async function alertsfunc() {
+    let alerts = (await (await fetch("/interactive/alerts.json")).json()).alerts;
+    alerts.forEach((E) => {
+        document.getElementById("alerts").innerText += E;
+    })
+}
+
+alertsfunc()

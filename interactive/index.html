@@ -188,9 +188,12 @@
         }
 
         .playerIcon {
-            height: 32px;
+            height: 34px;
+            width: 34px;
+            padding: 1px;
             border-radius: 5px;
             z-index: 9999999;
+            background-color: white !important;
         }
 
         .playerIcon>img {
@@ -210,6 +213,117 @@
             color: white;
             background-color: rgb(0, 0, 0);
 
+        }
+
+        .marquee {
+            margin: 0 auto;
+            width: 600px;
+            height: 30px;
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .marquee:before,
+        .marquee:after {
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 30px;
+            content: "";
+            z-index: 1;
+        }
+
+        .marquee:before {
+            left: 0;
+            background: linear-gradient(to right, #ccc 10%, transparent 80%);
+        }
+
+        .marquee:after {
+            right: 0;
+            background: linear-gradient(to left, #ccc 10%, transparent 80%);
+        }
+
+        .marquee__content {
+            width: 300%;
+            display: flex;
+            line-height: 30px;
+            animation: marquee 30s linear infinite forwards;
+        }
+
+        .marquee__content:hover {
+            animation-play-state: paused;
+        }
+
+        /*.list-inline {
+            display: flex;
+            justify-content: space-around;
+            width: 40.33333333%; 
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }*/
+
+        .list-inline>li {
+            margin-left: 5px;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-66.6%);
+            }
+        }
+
+        .marquee {
+            width: 450px;
+            margin: 0 auto;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .marquee span {
+            display: inline-block;
+            width: max-content;
+
+            padding-left: 100%;
+            /* show the marquee just outside the paragraph */
+            will-change: transform;
+            animation: marquee 25s linear infinite;
+        }
+
+        .marquee span:hover {
+            animation-play-state: paused
+        }
+
+
+        @keyframes marquee {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-100%, 0);
+            }
+        }
+
+
+        /* Respect user preferences about animations */
+
+        @media (prefers-reduced-motion: reduce) {
+            .marquee span {
+                animation-iteration-count: 1;
+                animation-duration: 0.01;
+                /* instead of animation: none, so an animationend event is 
+     * still available, if previously attached.
+     */
+                width: auto;
+                padding-left: 0;
+            }
         }
     </style>
     <script>
@@ -271,6 +385,8 @@
                 </div>
             </div>
         </nav>
+        <div class="bg-warning-subtle w-100 text-center marquee"><span id="alerts"></span></div>
+
         <div id="map"></div>
     </div>
     <!-- Pull-up options window -->
