@@ -1,0 +1,73 @@
+:root {
+    /* Use this to change the width of the icon */
+    /* It's a square loader, so will scale automatically */
+  --width: 32px;
+}
+
+
+.iconanimation {
+    width: var(--width);
+    height: var(--width);
+    border-radius: 5px;
+}
+
+@keyframes boatbounce {
+    0% {
+        transform: rotate(0deg)
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+#llamaboat {
+    width: var(--width);
+    position: relative;
+    top: 3px;
+    left: 0px;
+    z-index: 3;
+    animation: boatbounce 5s ease-in-out 0s infinite;
+    border-radius: 5px;
+}
+
+@keyframes bg {
+    from {
+        object-position: right;
+    }
+    to {
+        object-position: left;
+    }
+}
+
+#background {
+    height: var(--width) !important;
+    position: relative;
+    /*top: calc(-1 * var(--width));*/
+    left: -37px;
+    z-index: 2;
+    object-fit: cover;
+    object-position: right;
+    width: var(--width);
+    animation: bg 5s linear 0s infinite;
+    border-radius: 5px;
+}
+
+#backbackground {
+    height: var(--width);
+    position: relative;
+    /*top: calc(-2 * var(--width));*/
+    left: -74px;
+    z-index: 1;
+    object-fit: cover;
+    object-position: right;
+    width: var(--width);
+    animation: bg 20s linear 0s infinite;
+    border-radius: 5px;
+}
+
+nav > div > a > div {
+    display: inline-block;
+}

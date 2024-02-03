@@ -157,3 +157,7 @@ nav {
   width: 100vw;
   padding: 0;
 }
+
+.navbar-brand {
+  font-weight:normal;
+}

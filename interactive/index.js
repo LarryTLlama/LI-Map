@@ -453,7 +453,7 @@ window.onload = async function () {
                 // Get the player's username.
                 if (!players[x3.uuid]) {
                     let nom = x3.name;
-                    let skin = `https://starlightskins.lunareclipse.studio/skin-render/head/${x3.name}/full`//`http://api.tydiumcraft.net/v1/players/skin?uuid=${x3.uuid}&type=avatar`
+                    let skin = `https://starlightskins.lunareclipse.studio/skin-render/pixel/${nom}/face`//`http://api.tydiumcraft.net/v1/players/skin?uuid=${x3.uuid}&type=avatar`
                     players[x3.uuid] = L.marker([pixelsToMeters(x3.z), pixelsToMeters(x3.x)], {
                         icon: L.divIcon({
                             html: `<div class="playerIcon"><img src="${skin}" /> <p>${nom}</p></div>`
