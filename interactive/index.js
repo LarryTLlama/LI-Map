@@ -963,7 +963,9 @@ function gimmeDirections() {
 async function alertsfunc() {
     let alerts = (await (await fetch("/interactive/alerts.json")).json()).alerts;
     alerts.forEach((E) => {
-        document.getElementById("alerts").innerText += E;
+        for (const i of document.querySelectorAll(".alerts")) {
+            i.innerText += E;
+        }
     })
 }
 
