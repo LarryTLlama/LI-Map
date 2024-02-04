@@ -91,9 +91,6 @@ window.onload = async function () {
     }
 
     L.control.layers(null, thingymabobs, { position: 'bottomleft' }).addTo(map)
-
-
-
     L.control.zoom({
         position: 'bottomleft'
     }).addTo(map);
@@ -467,10 +464,10 @@ window.onload = async function () {
         })
     }
     addPlayers()
-
-    setInterval(async () => {
-        addPlayers()
-    }, 2000)
+    L.easyButton('<img src="/images/rotate-solid.svg">', (tis, damap) => { 
+        setTimeout(() => tis.enable(), 1000);
+        tis.disable()
+        addPlayers() }).addTo(map);
 
     // All da locations:
     let locations = [

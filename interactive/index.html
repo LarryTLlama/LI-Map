@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="/interactive/routing/leaflet-routing-machine.css" />
     <link rel="stylesheet" href="/logo.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/solid.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Interactive Map - Llama Iceways</title>
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
@@ -22,6 +23,10 @@
             padding: 0;
             max-height: 100vh;
             touch-action: none;
+        }
+
+        .circlearrow {
+            font-size: 1.5em;
         }
 
         .flexy {
@@ -238,12 +243,12 @@
 
         .marquee:before {
             left: 0;
-            background: linear-gradient(to right, #ccc 10%, transparent 80%);
+            background: linear-gradient(to right, var(--bs-warning-subtle) 20%, transparent 80%);
         }
 
         .marquee:after {
             right: 0;
-            background: linear-gradient(to left, #ccc 10%, transparent 80%);
+            background: linear-gradient(to left, var(--bs-warning-subtle) 20%, transparent 80%);
         }
 
         .marquee__content {
@@ -342,7 +347,9 @@
                         <img id="llamaboat" src="/images/llamainboat.png" />
                         <img id="background" src="/images/bg2.png" />
                         <img id="backbackground" src="/images/backbackground.png" />
-                    </div> <div>Llama Iceways</div></a>
+                    </div>
+                    <div>Llama Iceways</div>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -550,6 +557,8 @@
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
     <script src="./leafletrotatemarker.js"></script>
     <script src="/interactive/queue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
