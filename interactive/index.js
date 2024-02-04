@@ -1,3 +1,6 @@
+// Register Service Worker
+navigator.serviceWorker.register("/service-worker.js")
+
 let currentPlayerCoordinates = [];
 let polyline;
 let router;
@@ -464,10 +467,11 @@ window.onload = async function () {
         })
     }
     addPlayers()
-    L.easyButton('<img src="/images/rotate-solid.svg">', (tis, damap) => { 
+    let refreshplayersbtn = L.easyButton('<img src="/images/rotate-solid.svg">', (tis, damap) => { 
         setTimeout(() => tis.enable(), 1000);
         tis.disable()
-        addPlayers() }).addTo(map);
+        addPlayers() });
+    L.easyBar([refreshplayersbtn]).addTo(map);
 
     // All da locations:
     let locations = [

@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    <script>
+        // Register Service Worker
+        navigator.serviceWorker.register("/service-worker.js")
+    </script>
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     </link>
     <script src="/bootstrap/bootstrap.bundle.min.js"></script>
@@ -13,19 +17,24 @@
     <link rel="stylesheet" href="/logo.css" />
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-      </script>
-      <script defer src="/_vercel/insights/script.js"></script>
+    </script>
+    <link rel="manifest" href="manifest.json" />
+    
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
     <div class="cont">
         <nav class="navbar navbar-light navbar-expand-lg bg-light" data-bs-theme="light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><div class="iconanimation">
-                    <img id="llamaboat" src="/images/llamainboat.png" />
-                    <img id="background" src="/images/bg2.png" />
-                    <img id="backbackground" src="/images/backbackground.png" />
-                </div> <div>Llama Iceways</div></a>
+                <a class="navbar-brand" href="/">
+                    <div class="iconanimation">
+                        <img id="llamaboat" src="/images/llamainboat.png" />
+                        <img id="background" src="/images/bg2.png" />
+                        <img id="backbackground" src="/images/backbackground.png" />
+                    </div>
+                    <div>Llama Iceways</div>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -51,12 +60,18 @@
                                 Wiki Pages
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="https://peaceful-vanilla-club.fandom.com/wiki/Llama_Iceways">Llama Iceways</a></li>
-                                <li><a class="dropdown-item" href="https://peaceful-vanilla-club.fandom.com/wiki/Map:Llama_Iceways">LI Map (Wiki)</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://peaceful-vanilla-club.fandom.com/wiki/Llama_Iceways">Llama
+                                        Iceways</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://peaceful-vanilla-club.fandom.com/wiki/Map:Llama_Iceways">LI Map
+                                        (Wiki)</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="https://peaceful-vanilla-club.fandom.com/wiki/The_Llama_Commercial_Union">Llama Commercial Union</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://peaceful-vanilla-club.fandom.com/wiki/The_Llama_Commercial_Union">Llama
+                                        Commercial Union</a></li>
                             </ul>
                         </li>
                     </ul>
