@@ -593,19 +593,19 @@
     },
     "afs": {
         "coords": [-0.058803, 62.46875],
-        "connections": ["afr", "aft", "adh"]
+        "connections": ["afr", "aft", "adh", "afy"]
     },
     "aft": {
         "coords": [62.504719, 62.46875],
-        "connections": ["afs", "afu"]
+        "connections": ["afs", "afu", "afz", "agb"]
     },
     "afu": {
         "coords": [62.475979, 10.943606],
-        "connections": ["aft", "afv", "aey"]
+        "connections": ["aft", "afv", "aey", "agc"]
     },
     "afv": {
         "coords": [62.475979, -0.056394],
-        "connections": ["afu", "afw", "aew"]
+        "connections": ["afu", "afw", "aew", "agd"]
     },
     "afw": {
         "coords": [62.425929, -62.5625],
@@ -613,6 +613,74 @@
     },
     "afx": {
         "coords": [-1.305668, -62.5],
-        "connections": ["afw", "afp", "acl"]
+        "connections": ["afw", "afp", "acl", "agl"]
+    },
+    "afy": {
+        "coords": [-0.058803, 93.75],
+        "connections": [ "afs", "afz", "ago" ]
+    },
+    "afz": {
+        "coords": [62.46875, 93.75],
+        "connections": ["afy", "aft", "aga"]
+    },
+    "aga": {
+        "coords": [93.75, 93.75],
+        "connections": ["afz", "agb"]
+    },
+    "agb": {
+        "coords":  [93.75, 62.504719],
+        "connections": ["aga", "aft", "agc"]
+    },
+    "agc": {
+        "coords": [93.75, 10.943606],
+        "connections": ["agb", "afu", "agd"]
+    },
+    "agd": {
+        "coords": [93.75, -0.056394],
+        "connections": ["agc", "afv", "age"]
+    },
+    "age": {
+        "coords": [93.75, -93.75],
+        "connections": ["agd", "agf"]
+    },
+    "agf": {
+        "coords": [35.375408, -93.75],
+        "connections": ["age", "agg", "agh"]
+    },
+    "agh": {
+        "coords": [35.375408, -97.75],
+        "connections": ["agk", "agf"]
+    },
+    "agg": {
+        "coords": [35.375408, -89.6875],
+        "connections": ["agf", "agi"]
+    },
+    "agi": {
+        "coords": [27.252935, -89.6875],
+        "connections": ["agg", "agj"]
+    },
+    "agj": {
+        "coords": [27.252935, -93.75],
+        "connections": ["agi", "agk", "agl"]
+    },
+    "agk": {
+        "coords": [27.252935, -97.75],
+        "connections": ["agh", "agj"]
+    },
+    "agl": {
+        "coords": [-1.305668, -93.75],
+        "connections": ["afx", "agj", "agm"]
+    },
+    "agm": {
+        "coords": [-93.75, -93.75],
+        "connections": ["agl", "agn"]
+    },
+    "agn": {
+        "coords": [-93.75, 0],
+        "connections": ["agm", "ago", "afq"]
+    },
+    "ago": {
+        "coords": [-93.75, 93.75],
+        "connections": ["agn", "afy"]
     }
 }

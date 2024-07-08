@@ -380,6 +380,42 @@ window.onload = async function () {
         [
             [27.789973, 10.90625],
             [pixelsToMeters(2000), pixelsToMeters(350)]
+        ],
+        [
+            [-1.221685, -62.5],
+            [-1.033709, -93.75],
+        ],
+        [
+            [-93.848006, -93.65625],
+            [-93.659243, 93.65625],
+            [93.659243, 93.71875],
+            [93.659243, -93.71875],
+            // Go around Flat's thing
+            [35.43268, -93.6875],
+            [35.495161, -89.6875],
+            [27.341447, -89.65625],
+            [27.372687, -93.78125],
+            // Back on track
+            [-93.848006, -93.65625],
+        ],
+        [
+            // Other half of Flat's thing
+            [35.43268, -93.6875],
+            [35.370199, -97.75],
+            [27.216486, -97.75],
+            [27.372687, -93.78125],
+        ],
+        [
+            [62.521707, 0.03125],
+            [93.685294, 0.1875],
+        ],
+        [
+            [-0.033835, 62.46875],
+            [-0.033767, 93.71875],
+        ],
+        [
+            [-62.502361, 0.03125],
+            [-93.711608, 0.3125],
         ]
 
 
@@ -390,7 +426,7 @@ window.onload = async function () {
     let colorPicker = document.getElementById("colour")
     let r = await fetch("./interactive/geojson/paths.json");
     let r2d2 = await r.json();
-    polyline = L.polyline(lines, { color: '#94dee7' }).addTo(linesLayer);
+    polyline = L.polyline(lines, { color: '#94dee7', weight: 1 }).addTo(linesLayer);
     console.log(polyline.toGeoJSON())
     console.log(window.location.search)
     let player = null;
@@ -453,7 +489,7 @@ window.onload = async function () {
                 // Get the player's username.
                 if (!players[x3.uuid]) {
                     let nom = x3.name;
-                    let skin = `https://starlightskins.lunareclipse.studio/skin-render/pixel/${nom}/face`//`http://api.tydiumcraft.net/v1/players/skin?uuid=${x3.uuid}&type=avatar`
+                    let skin = `https://starlightskins.lunareclipse.studio/render/pixel/${nom}/face`//`http://api.tydiumcraft.net/v1/players/skin?uuid=${x3.uuid}&type=avatar`
                     players[x3.uuid] = L.marker([pixelsToMeters(x3.z), pixelsToMeters(x3.x)], {
                         icon: L.divIcon({
                             html: `<div class="playerIcon"><img src="${skin}" /> <p>${nom}</p></div>`
@@ -748,6 +784,46 @@ window.onload = async function () {
             name: "WORI/NORI Junction",
             description: "Portal Access on the 2K Loop",
             coords: [-62.545647, -62.46875],
+        },
+        {
+            name: "3K Loop East Access",
+            description: "Portal access to/from the 3K loop from the 1.20 lands. Can also be used as access to the Abyssal Peaks region.",
+            coords: [0.054104, 93.75],
+        },
+        {
+            name: "3K Loop South-East Access",
+            description: "Portal access to/from the 3K loop from the 1.20 lands. Can also be used as access to the Abyssal Peaks region.",
+            coords: [93.866915, 93.75],
+        },
+        {
+            name: "3K Loop South Access",
+            description: "Portal access to/from the 3K loop from the 1.20 lands. Can also be used as access to the Abyssal Peaks region.",
+            coords: [93.866915, 93.75],
+        },
+        {
+            name: "3K Loop South-West Access",
+            description: "Portal access to/from the 3K loop from the 1.20 lands. Can also be used as access to the Abyssal Peaks region.",
+            coords: [93.808341, -93.6875],
+        },
+        {
+            name: "3K Loop West Access",
+            description: "Portal access to/from the 3K loop from the 1.20 lands. Can also be used as access to the Abyssal Peaks region.",
+            coords: [-1.162118, -93.75],
+        },
+        {
+            name: "3K Loop North-West Access",
+            description: "Portal access to/from the 3K loop from the 1.20 lands. Can also be used as access to the Abyssal Peaks region.",
+            coords: [-93.676616, -93.6875],
+        },
+        {
+            name: "3K Loop North Access",
+            description: "Portal access to/from the 3K loop from the 1.20 lands. Can also be used as access to the Abyssal Peaks region.",
+            coords: [-93.568058, 0.0625],
+        },
+        {
+            name: "3K Loop North-East Access",
+            description: "Portal access to/from the 3K loop from the 1.20 lands. Can also be used as access to the Abyssal Peaks region.",
+            coords: [-93.442981, 93.6875],
         },
     ]
 
