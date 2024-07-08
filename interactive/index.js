@@ -114,7 +114,7 @@ window.onload = async function () {
     const TileLayerCustom = L.TileLayer.extend({
         getTileUrl(coords) {
             //let x = imageToDataUri(`http://localhost:443?url=http://web.peacefulvanilla.club/maps/tiles/World_nether/${coords.z}/${coords.x}_${coords.y}.png`, 512, 512)
-            return window.location.protocol + "//" + window.location.host + `/interactive/tiles/${coords.z}/${coords.x}_${coords.y}.png`;
+            return window.location.protocol + "//" + window.location.host + `/interactive/tempver/${coords.z}/${coords.x}_${coords.y}.png`;
         },
         options: {
             noWrap: true,
@@ -122,7 +122,7 @@ window.onload = async function () {
             minZoom: 0,
             maxZoom: 5,
             tileSize: 512,
-            attribution: `Last map tile update: 26th Jan 2024 - <a href="https://web.peacefulvanilla.club/maps" >PVC Map</a>`
+            attribution: `Last map tile update: 8th Jul 2024 - <a href="https://web.peacefulvanilla.club/maps" >PVC Map</a>`
         },
     });
 
