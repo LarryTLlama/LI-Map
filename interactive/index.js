@@ -798,7 +798,7 @@ window.onload = async function () {
         {
             name: "3K Loop South Access",
             description: "Portal access to/from the 3K loop from the 1.20 lands. Can also be used as access to the Abyssal Peaks region.",
-            coords: [93.866915, 93.75],
+            coords: [92.445581, 0.5],
         },
         {
             name: "3K Loop South-West Access",
